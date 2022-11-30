@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\backOffice\FauneFloreController;
+use App\Http\Controllers\backOffice\LoisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('lois',LoisController::class);
+Route::resource('env',FauneFloreController::class);
