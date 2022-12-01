@@ -21,7 +21,23 @@ class FauneFloreController extends Controller
     public function index()
     {
         $listes = $this->database->getReference($this->tablename)->getValue();
-        return $listes;
+        $data = [];
+        $i = 1;
+        foreach($listes as $key => $item){
+            $data[] = [
+                 $i => [
+                     'idFirebase' => $key,
+                     'annee' => $item['annee'],
+                     'ministere' => $item['ministere'],
+                     'note' => $item['note'],
+                     'numero' => $item['numero'],
+                     'objet' => $item['objet'],
+                     'type' => $item['type'],
+                 ]
+            ]; 
+            $i++;
+         }
+         return $data;
     }
 
     /**
