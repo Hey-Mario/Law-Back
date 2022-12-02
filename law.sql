@@ -40,7 +40,7 @@ CREATE TABLE `contenus` (
   PRIMARY KEY (`id`),
   KEY `contenus_info_id_foreign` (`info_id`),
   CONSTRAINT `contenus_info_id_foreign` FOREIGN KEY (`info_id`) REFERENCES `infos` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,6 +49,7 @@ CREATE TABLE `contenus` (
 
 LOCK TABLES `contenus` WRITE;
 /*!40000 ALTER TABLE `contenus` DISABLE KEYS */;
+INSERT INTO `contenus` VALUES (1,NULL,NULL,'1','sdfs',NULL,NULL,NULL,NULL,'1','dsfsdfsfsdfsdfs',6,NULL,NULL),(2,'1','dasdsa','1','asdsdfgdg',NULL,NULL,NULL,NULL,'2','asdsadsadsadasa',6,NULL,NULL),(3,'1','dasdsa','2','asdasda',NULL,NULL,NULL,NULL,'3','gsdgdsgdfgsgsd',6,NULL,NULL),(4,'2','sfdgsg',NULL,NULL,NULL,NULL,NULL,NULL,'4','sgsdgfdsgdsgdfg',6,NULL,NULL);
 /*!40000 ALTER TABLE `contenus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,4 +287,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-02 17:20:52
+-- Dump completed on 2022-12-02 22:20:56

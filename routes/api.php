@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\mobile\FauneFloreController;
 use App\Http\Controllers\backOffice\api\TypeController;
 use App\Http\Controllers\backOffice\api\ThemeController;
+use App\Http\Controllers\mobile\api\MgController;
+use App\Http\Controllers\mobile\api\VfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +30,8 @@ Route::post('create/{theme_id}/types',[TypeController::class,'store']);
 Route::put('update/{theme_id}/{type_id}',[TypeController::class,'update']);
 Route::get('listes/{id_selec}/contenu',[TypeController::class,'show']);
 Route::post('create/{info_id}/contenu',[ContenuController::class,'create']);
+
+
+//mobile
+Route::get('allInfo/vf',[VfController::class],'index');
+Route::get('allInfo/mg',[MgController::class],'index');
