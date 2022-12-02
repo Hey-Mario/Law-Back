@@ -1,18 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\mobile;
+namespace App\Http\Controllers\backOffice;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Kreait\Firebase\Contract\Database;
+use Illuminate\Http\Request;
 
-class FauneFloreController extends Controller
+class ReadPdfController extends Controller
 {
-    public function __construct(Database $database)
-    {
-        $this->database = $database;
-        $this->tablename = 'fauneFlore';
-    }
     /**
      * Display a listing of the resource.
      *
@@ -20,20 +14,17 @@ class FauneFloreController extends Controller
      */
     public function index()
     {
-        $listes = $this->database->getReference($this->tablename)->getValue();
-        $data = [];
-        foreach($listes as $key => $item){
-            $data[$this->tablename][] = [
-                     'idFirebase' => $key,
-                     'annee' => $item['annee'],
-                     'ministere' => $item['ministere'],
-                     'note' => $item['note'],
-                     'numero' => $item['numero'],
-                     'objet' => $item['objet'],
-                     'type' => $item['type'],
-                 ];
-         }
-         return $data;
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('read');
     }
 
     /**
@@ -44,7 +35,14 @@ class FauneFloreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $file = $request->pdf;
+        // dd($file);
+        $pdfParser = new \Smalot\PdfParser\Parser();
+        $pdf = $pdfParser->parseFile($file->path());
+        $content = $pdf->getText();
+        $part = explode("\t \t\n",$content);
+        // dd($content);
+        dd($part);
     }
 
     /**
@@ -55,8 +53,18 @@ class FauneFloreController extends Controller
      */
     public function show($id)
     {
-        $law = $this->database->getReference($this->tablename)->getChild($id)->getValue();
-        return $law;
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**
