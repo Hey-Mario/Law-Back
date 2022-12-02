@@ -34,5 +34,5 @@ Route::post('create/{info_id}/contenu',[ContenuController::class,'create']);
 
 //mobile 
 Route::get('allInfo/vf',[VfController::class,'index']);
-//https://73c3-154-126-58-66.eu.ngrok.io/allInfo/vf or mg
+//https://699f-154-126-58-66.eu.ngrok.io/api/allInfo/vf or mg
 Route::get('allInfo/mg',[MgController::class,'index']);
