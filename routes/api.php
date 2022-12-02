@@ -33,5 +33,5 @@ Route::post('create/{info_id}/contenu',[ContenuController::class,'create']);
 
 
 //mobile
-Route::get('allInfo/vf',[VfController::class],'index');
-Route::get('allInfo/mg',[MgController::class],'index');
+Route::get('allInfo/vf',[VfController::class,'index']);
+Route::get('allInfo/mg',[MgController::class,'index']);
