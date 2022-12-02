@@ -1,46 +1,42 @@
 <?php
 
-namespace App\Http\Controllers\backOffice\api;
+namespace App\Http\Controllers\mobile\api;
 
-use App\Models\Theme;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Contenu;
+use Illuminate\Http\Request;
 
-class ThemeController extends Controller
+class MgController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($theme_id)
+    public function index()
     {
-        $selecThem = Theme::where('id',$theme_id)->first();
-        $types = $selecThem->types;
+        $contenus = Contenu::all();
         $data = [];
-        $datas = [];
-            foreach($types as $type)
-                foreach($type->infos as $info){
-                    if($info->theme->id == $theme_id) {
-                        $datas[$info->theme->nom][$info->id] = [
-                            'id' => $info->id,
-                            'numero' => $info->numeroType,
-                            'texte' => $info->titreType,
-                            'type' => $info->type->nom,
-                        ];
-                    }
-                }
-            foreach($datas as $key => $dat){
-                foreach($dat as $da){
-                    $data[$key][] = [
-                        'id' => $da['id'],
-                        'numero' => $da['numero'],
-                        'texte' => $da['texte'],
-                        'type' => $da['type'],
-                    ];
-                }
-            }
-        return $data;
+        foreach($contenus as $contenu)
+        {
+            $data[$contenu->info->theme->nom][] = [
+                'id' => $contenu->id,
+                'themeId' => $contenu->info->theme->id,
+                'theme' => $contenu->info->theme->nom,
+                // 'numtitre' => ,
+                'titre' => is_null($contenu->numtitre) ? null : 'Titre'.$contenu->numtitre ." ".$contenu->titre,
+                // 'numChapitre' => ,
+                'chapitre' => is_null($contenu->numChapitre) ? null : 'Chapitre'.$contenu->numChapitre." ".$contenu->chapitre,
+                // 'numSection' => ,
+                'section' => is_null($contenu->numSection) ? null : 'Section'.$contenu->numSection." ".$contenu->section,
+                'sousSection' => is_null($contenu->numSousSection) ? null : 'Sous Section'.$contenu->numSousSection." ".$contenu->sousSection,
+                // 'numSousSection' => ,
+                'article' => 'Article '.$contenu->numArticle,
+                'contenu' => $contenu->article,
+                'type' => $contenu->info->type->nom,
+                'typeId' => $contenu->info->type->id,
+            ];
+        }
     }
 
     /**
