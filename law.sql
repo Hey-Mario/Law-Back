@@ -101,7 +101,7 @@ CREATE TABLE `infos` (
   KEY `infos_type_id_foreign` (`type_id`),
   CONSTRAINT `infos_theme_id_foreign` FOREIGN KEY (`theme_id`) REFERENCES `themes` (`id`) ON DELETE CASCADE,
   CONSTRAINT `infos_type_id_foreign` FOREIGN KEY (`type_id`) REFERENCES `types` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,7 @@ CREATE TABLE `infos` (
 
 LOCK TABLES `infos` WRITE;
 /*!40000 ALTER TABLE `infos` DISABLE KEYS */;
-INSERT INTO `infos` VALUES (1,'CONVENTION DES NATIONS UNIES CONTRE LA CORRUPTION','C2004',1,1,NULL,NULL),(2,'autorisant-la-ratification-de-la-Convention-des-Nations-Unies-contre-la-corruption-','2004-017',1,2,NULL,NULL),(3,'Portant Statut Général des Fonctionnaires','2003-011',1,2,NULL,NULL),(4,'portant Code de Conduite de la Police Nationale','24.4802012',2,3,NULL,NULL),(5,'portant Code de déontologie des magistrats','2005-710 ',2,4,NULL,NULL),(6,'fixant les modalités et les conditions d’application de la LOI n° 2015- 005','2017- 415',3,4,NULL,NULL),(7,'portant refonte du Code de Gestion des Aires Protégées','2015-005',3,2,NULL,NULL),(18,'Portant mise en place des normes d’exploitation des bois à Madagascar',' 136732017',4,3,NULL,NULL),(19,'portant réglementation des activités d’aquaculture','2016-1493',4,4,NULL,NULL),(20,'portant création de la chaîne spéciale de lutte contre le trafic de bois de rose etou de bois d\'ébène et répression des infractions relatives aux bois de rose etou bois d\'ébène','2015-056',4,2,NULL,NULL),(21,'portant Charte de l’Environnement Malagasy actualisée','2015-003',4,2,NULL,NULL),(22,'sur le commerce international des espèces de faune et de flore sauvages','2005-018',4,2,NULL,NULL),(23,'Fixant le régime des défrichements et des feux de végétation','60-127',4,5,NULL,NULL),(24,'sur la Lutte contre la Corruption','2016-020',5,2,NULL,NULL),(25,'CODE DE PROCEDURE PENALE',NULL,5,2,NULL,NULL),(26,'portant restructuration du BIANCO','2020-013',6,4,NULL,NULL),(27,'portant Code des Marchés Publics','2016-055',6,2,NULL,NULL),(28,'RELATIVE AU RECOUVREMENT DES AVOIRS ILLICITES','2019-015',6,5,NULL,NULL);
+INSERT INTO `infos` VALUES (1,'CONVENTION DES NATIONS UNIES CONTRE LA CORRUPTION','C2004',1,1,NULL,NULL),(2,'autorisant-la-ratification-de-la-Convention-des-Nations-Unies-contre-la-corruption-','2004-017',1,2,NULL,NULL),(3,'Portant Statut Général des Fonctionnaires','2003-011',1,2,NULL,NULL),(4,'portant Code de Conduite de la Police Nationale','24.4802012',2,3,NULL,NULL),(5,'portant Code de déontologie des magistrats','2005-710 ',2,4,NULL,NULL),(6,'fixant les modalités et les conditions d’application de la LOI n° 2015- 005','2017- 415',3,4,NULL,NULL),(7,'portant refonte du Code de Gestion des Aires Protégées','2015-005',3,2,NULL,NULL),(18,'Portant mise en place des normes d’exploitation des bois à Madagascar',' 136732017',4,3,NULL,NULL),(19,'portant réglementation des activités d’aquaculture','2016-1493',4,4,NULL,NULL),(20,'portant création de la chaîne spéciale de lutte contre le trafic de bois de rose etou de bois d\'ébène et répression des infractions relatives aux bois de rose etou bois d\'ébène','2015-056',4,2,NULL,NULL),(21,'portant Charte de l’Environnement Malagasy actualisée','2015-003',4,2,NULL,NULL),(22,'sur le commerce international des espèces de faune et de flore sauvages','2005-018',4,2,NULL,NULL),(23,'Fixant le régime des défrichements et des feux de végétation','60-127',4,5,NULL,NULL),(24,'sur la Lutte contre la Corruption','2016-020',5,2,NULL,NULL),(25,'CODE DE PROCEDURE PENALE',NULL,5,2,NULL,NULL),(26,'portant restructuration du BIANCO','2020-013',6,4,NULL,NULL),(27,'portant Code des Marchés Publics','2016-055',6,2,NULL,NULL),(28,'RELATIVE AU RECOUVREMENT DES AVOIRS ILLICITES','2019-015',6,5,NULL,NULL),(29,'Portant révision de la Législation Forestière','97/017',4,2,NULL,NULL);
 /*!40000 ALTER TABLE `infos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,4 +286,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-02 15:46:58
+-- Dump completed on 2022-12-02 17:20:52
