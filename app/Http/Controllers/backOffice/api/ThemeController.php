@@ -1,39 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\mobile;
+namespace App\Http\Controllers\backOffice\api;
 
+use App\Models\Theme;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Kreait\Firebase\Contract\Database;
 
-class FauneFloreController extends Controller
+class ThemeController extends Controller
 {
-    public function __construct(Database $database)
-    {
-        $this->database = $database;
-        $this->tablename = 'fauneFlore';
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($theme)
     {
-        $listes = $this->database->getReference($this->tablename)->getValue();
+        $selecThem = Theme::where('nom',$theme)->first();
+        $types = $selecThem->types;
         $data = [];
-        foreach($listes as $key => $item){
-            $data[$this->tablename][] = [
-                     'idFirebase' => $key,
-                     'annee' => $item['annee'],
-                     'ministere' => $item['ministere'],
-                     'note' => $item['note'],
-                     'numero' => $item['numero'],
-                     'objet' => $item['objet'],
-                     'type' => $item['type'],
-                 ];
-         }
-         return $data;
+        foreach($types as $type) 
+        {
+            $data[] = [
+                'id' => $type->id,
+                'type' => $type->nom
+            ];
+        }
+        return $data;
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -55,8 +57,18 @@ class FauneFloreController extends Controller
      */
     public function show($id)
     {
-        $law = $this->database->getReference($this->tablename)->getChild($id)->getValue();
-        return $law;
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**

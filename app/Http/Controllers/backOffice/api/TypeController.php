@@ -1,39 +1,44 @@
 <?php
 
-namespace App\Http\Controllers\mobile;
+namespace App\Http\Controllers\backOffice\api;
 
+use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Kreait\Firebase\Contract\Database;
 
-class FauneFloreController extends Controller
+class TypeController extends Controller
 {
-    public function __construct(Database $database)
-    {
-        $this->database = $database;
-        $this->tablename = 'fauneFlore';
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type, $theme)
     {
-        $listes = $this->database->getReference($this->tablename)->getValue();
+        $selecType = Type::where('nom', $type)->first();
+        $contents = $selecType->contents;
         $data = [];
-        foreach($listes as $key => $item){
-            $data[$this->tablename][] = [
-                     'idFirebase' => $key,
-                     'annee' => $item['annee'],
-                     'ministere' => $item['ministere'],
-                     'note' => $item['note'],
-                     'numero' => $item['numero'],
-                     'objet' => $item['objet'],
-                     'type' => $item['type'],
-                 ];
-         }
-         return $data;
+        foreach($contents as $content){
+            if($content->theme == $theme) {
+                $data[$type][] = [
+                    'id' => $content->id,
+                    'contenu' => $content->contenu,
+                    'numero' => $content->numero
+                ];
+            }
+        }
+        return $data;
+    }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -55,8 +60,18 @@ class FauneFloreController extends Controller
      */
     public function show($id)
     {
-        $law = $this->database->getReference($this->tablename)->getChild($id)->getValue();
-        return $law;
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**

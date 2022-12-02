@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\mobile\FauneFloreController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\mobile\FauneFloreController;
+use App\Http\Controllers\backOffice\api\TypeController;
+use App\Http\Controllers\backOffice\api\ThemeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::apiResource('fauneflore',FauneFloreController::class);
+Route::get('listes/{theme}/types',[ThemeController::class,'index']);
+Route::get('listes/{theme}/{type}',[TypeController::class,'index']);
