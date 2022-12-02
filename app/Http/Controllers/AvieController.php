@@ -9,10 +9,18 @@ class AvieController extends Controller
 {
     public function store(Request $request)
     {
+        // return response()->json(['test' => $request->all()]);
         Avie::create([
-            'nom' => $request->nom,
-            'email' => $request->email,
-            'description' => $request->description,
+            'nom' => (string)$request->name,
+            'email' => (string)$request->email,
+            'description' => (string)$request->description,
         ]);
+
+        return response()->json(['success' => 1]);
+    }
+    public function index()
+    {
+        $avies = Avie::all();
+        return $avies;
     }
 }

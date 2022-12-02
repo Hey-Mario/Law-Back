@@ -55,6 +55,7 @@ class TypeController extends Controller
         if(!is_null($request)){
             Info::create([
                 'titreType' => $request->texte,
+                'titreTypeMg' => $request->texteMg,
                 'numeroType' => $request->numero,
                 'theme_id' => (int)$theme_id,
                 'type_id' => (int)$request->type_id,
@@ -98,6 +99,7 @@ class TypeController extends Controller
         $type = Type::where('id', $type_id)->first();
         $type->update([
             'titreType' => $request->texte,
+            'titreTypeMg' => $request->texteMg,
             'numeroType' => $request->numero,
             'theme_id' => (int)$theme_id,
             'type_id' => (int)$request->type_id,

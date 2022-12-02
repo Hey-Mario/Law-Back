@@ -10,9 +10,14 @@ class PlainteController extends Controller
     public function store(Request $request)
     {
         Plainte::create([
-            'nom' => $request->nom,
+            'nom' => $request->name,
             'email' => $request->email,
             'description' => $request->description,
         ]);
+    }
+    public function index()
+    {
+        $plaintes = Plainte::all();
+        return $plaintes;
     }
 }
