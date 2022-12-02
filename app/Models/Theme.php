@@ -9,13 +9,15 @@ class Theme extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function types()
     {
-        return $this->belongsToMany(Type::class, 'App\Models\Content');
+        return $this->belongsToMany(Type::class, 'App\Models\Info');
     }
 
-    public function contents()
+    public function Infos()
     {
-        return $this->hasMany(Content::class);
+        return $this->hasMany(Info::class);
     }
 }

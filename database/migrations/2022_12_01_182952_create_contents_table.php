@@ -13,10 +13,10 @@ class CreateContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contents', function (Blueprint $table) {
+        Schema::create('infos', function (Blueprint $table) {
             $table->id();
-            $table->string('contenu');
-            $table->string('numero');
+            $table->string('titreType')->nullable();
+            $table->string('numeroType')->nullable();
             $table->foreignId('theme_id')->constrained()->onDelete('cascade');
             $table->foreignId('type_id')->constrained()->onDelete('cascade');
             $table->timestamps();

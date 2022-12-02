@@ -9,13 +9,15 @@ class Type extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function types()
     {
-        return $this->belongsToMany(Theme::class, 'App\Models\Content');
+        return $this->belongsToMany(Theme::class, 'App\Models\Info');
     }
 
-    public function contents()
+    public function infos()
     {
-        return $this->hasMany(Content::class);
+        return $this->hasMany(Info::class);
     }
 }

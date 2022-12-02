@@ -13,18 +13,33 @@ class ThemeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($theme)
+    public function index($theme_id)
     {
-        $selecThem = Theme::where('nom',$theme)->first();
+        $selecThem = Theme::where('id',$theme_id)->first();
         $types = $selecThem->types;
         $data = [];
-        foreach($types as $type) 
-        {
-            $data[] = [
-                'id' => $type->id,
-                'type' => $type->nom
-            ];
-        }
+        $datas = [];
+            foreach($types as $type)
+                foreach($type->infos as $info){
+                    if($info->theme->id == $theme_id) {
+                        $datas[$info->theme->nom][$info->id] = [
+                            'id' => $info->id,
+                            'numero' => $info->numeroType,
+                            'texte' => $info->titreType,
+                            'type' => $info->type->nom,
+                        ];
+                    }
+                }
+            foreach($datas as $key => $dat){
+                foreach($dat as $da){
+                    $data[$key][] = [
+                        'id' => $da['id'],
+                        'numero' => $da['numero'],
+                        'texte' => $da['texte'],
+                        'type' => $da['type'],
+                    ];
+                }
+            }
         return $data;
     }
 

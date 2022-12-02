@@ -13,17 +13,18 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($type, $theme)
+    public function index($type_id, $theme_id)
     {
-        $selecType = Type::where('nom', $type)->first();
-        $contents = $selecType->contents;
+        $selecType = Type::where('type_id', $type_id)->first();
+        $infos = $selecType->infos;
         $data = [];
-        foreach($contents as $content){
-            if($content->theme == $theme) {
-                $data[$type][] = [
-                    'id' => $content->id,
-                    'contenu' => $content->contenu,
-                    'numero' => $content->numero
+        foreach($infos as $info){
+            if($info->theme_id == $theme_id) {
+                $data[$info->theme][] = [
+                    'id' => $info->id,
+                    'numero' => $info->numeroType,
+                    'texte' => $info->titreType,
+                    'type' => $info->type->nom,
                 ];
             }
         }
