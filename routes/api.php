@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AvieController;
 use App\Http\Controllers\backOffice\api\ContenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,7 @@ use App\Http\Controllers\backOffice\api\TypeController;
 use App\Http\Controllers\backOffice\api\ThemeController;
 use App\Http\Controllers\mobile\api\MgController;
 use App\Http\Controllers\mobile\api\VfController;
+use App\Http\Controllers\PlainteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +38,6 @@ Route::post('create/{info_id}/contenu',[ContenuController::class,'create']);
 Route::get('allInfo/vf',[VfController::class,'index']);
 //https://4fb5-102-16-42-212.eu.ngrok.io/api/allInfo/vf or mg
 Route::get('allInfo/mg',[MgController::class,'index']);
+
+Route::post('send/avie',[AvieController::class,'store']);
+Route::post('send/plainte',[PlainteController::class,'store']);
