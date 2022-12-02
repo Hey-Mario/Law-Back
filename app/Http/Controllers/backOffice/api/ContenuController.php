@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backOffice\api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contenu;
 use Illuminate\Http\Request;
 
 class ContenuController extends Controller
@@ -33,9 +34,24 @@ class ContenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $info_id)
     {
-        //
+        if(!is_null($request)){
+            Contenu::create([
+                'numtitre' => $request->numtitre,
+                'titre' =>$request->titre,
+                'numChapitre' =>$request->numChapitre,
+                'chapitre' =>$request->chapitre,
+                'numSection' =>$request->numSection,
+                'section' =>$request->section,
+                'numSousSection' =>$request->numSousSection,
+                'sousSection' =>$request->sousSection,
+                'numArticle' =>$request->numArticle,
+                'article' =>$request->article,
+                'info_id' =>$request->info_id,
+            ]);
+        }
+        return response()->json(['sucess' => 1]);
     }
 
     /**
@@ -69,7 +85,22 @@ class ContenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contenu = Contenu::where('id',$id)->first();
+        $contenu->update([
+            'numtitre' => $request->numtitre,
+            'titre' =>$request->titre,
+            'numChapitre' =>$request->numChapitre,
+            'chapitre' =>$request->chapitre,
+            'numSection' =>$request->numSection,
+            'section' =>$request->section,
+            'numSousSection' =>$request->numSousSection,
+            'sousSection' =>$request->sousSection,
+            'numArticle' =>$request->numArticle,
+            'article' =>$request->article,
+            'info_id' =>$request->info_id,
+        ]);
+
+        return response()->json(['success' => 1]);
     }
 
     /**
@@ -80,6 +111,8 @@ class ContenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contenu = Contenu::findOrFail($id);
+        $contenu->delete();
+        return response()->json(['success' => 1]);
     }
 }

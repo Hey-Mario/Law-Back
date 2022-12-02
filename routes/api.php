@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backOffice\api\ContenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\mobile\FauneFloreController;
@@ -23,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('fauneflore',FauneFloreController::class);
 Route::get('listes/{theme_id}/types',[ThemeController::class,'index']);
 // Route::get('listes/{theme_id}/{type_id}',[TypeController::class,'index']);
-Route::get('create/{theme_id}/types',[TypeController::class,'store']);
+Route::post('create/{theme_id}/types',[TypeController::class,'store']);
 Route::put('update/{theme_id}/{type_id}',[TypeController::class,'update']);
 Route::get('listes/{id_selec}/contenu',[TypeController::class,'show']);
+Route::post('create/{info_id}/contenu',[ContenuController::class,'create']);
