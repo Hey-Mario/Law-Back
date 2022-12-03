@@ -77,7 +77,7 @@ class TypeController extends Controller
     }
     public function shw($id)
     {
-        $contents = Type::where('id',$id)->first();
+        $contents = Info::where('id',$id)->first();
         return $contents;
     }
     
