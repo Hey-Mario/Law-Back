@@ -29,7 +29,7 @@ Route::apiResource('fauneflore',FauneFloreController::class);
 Route::get('listes/{theme_id}/types',[ThemeController::class,'index']);
 // Route::get('listes/{theme_id}/{type_id}',[TypeController::class,'index']);
 Route::post('create/{theme_id}/types',[TypeController::class,'store']);
-Route::put('show/{id}/type',[TypeController::class,'shw']);
+Route::get('show/{id}/type',[TypeController::class,'shw']);
 Route::put('update/{id}/type',[TypeController::class,'update']);
 Route::get('listes/{id_selec}/contenu',[TypeController::class,'show']);
 Route::post('create/{info_id}/contenu',[ContenuController::class,'create']);
