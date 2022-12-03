@@ -28,31 +28,34 @@ class MgController extends Controller
          foreach($info->contenus as $contenu)
      {
          $contiens[] = [
-                 'titre' => is_null($contenu->numtitre) ? null : 'Loha teny '.$contenu->numtitre ." ".$contenu->titreMg,
+                'id' => is_null($contenu->articleMg) ?  null : $contenu->id,
+                 'titre' => is_null($contenu->titreMg) ? null : 'Loha teny '.$contenu->numtitre ." ".$contenu->titreMg,
                  // 'numChapitre' => ,
-                 'chapitre' => is_null($contenu->numChapitre) ? null : 'Toko '.$contenu->numChapitre." ".$contenu->chapitreMg,
+                 'chapitre' => is_null($contenu->chapitreMg) ? null : 'Toko '.$contenu->numChapitre." ".$contenu->chapitreMg,
                  // 'numSection' => ,
-                 'section' => is_null($contenu->numSection) ? null : 'Sokajy '.$contenu->numSection." ".$contenu->sectionMg,
-                 'sousSection' => is_null($contenu->numSousSection) ? null : 'Sokajy ambany  '.$contenu->numSousSection." ".$contenu->sousSectionMg,
+                 'section' => is_null($contenu->sectionMg) ? null : 'Sokajy '.$contenu->numSection." ".$contenu->sectionMg,
+                 'sousSection' => is_null($contenu->sousSectionMg) ? null : 'Sokajy ambany  '.$contenu->numSousSection." ".$contenu->sousSectionMg,
                  // 'numSousSection' => ,
-                 'article' => 'Andininy '.$contenu->numArticle,
+                 'article' => is_null($contenu->articleMg) ?  null : 'Andininy '.$contenu->numArticle,
                  'contenu' => $contenu->articleMg,
          ];
-     }
-         $data[] = [
-             'id' => $info->id,
-             "intitule" => $info->type->nomMg. " no ".$info->numeroType." ".$info->titreTypeMg,
-             'type' => [
-                 'id' => $info->type->id,
-                 'nom' => $info->type->nomMg,
-             ],
-             'theme' => [
-                 'id' => $info->theme->id,
-                 'nom' => $info->theme->nomMg,
-             ],
-             'contenu' => $contiens
-         ];
+     }  if($info->numeroType == '97/017'){
+            $data[] = [
+                'id' => $info->id,
+                "intitule" => $info->type->nomMg. " no ".$info->numeroType." ".$info->titreTypeMg,
+                'type' => [
+                    'id' => $info->type->id,
+                    'nom' => $info->type->nomMg,
+                ],
+                'theme' => [
+                    'id' => $info->theme->id,
+                    'nom' => $info->theme->nomMg,
+                ],
+                'contenu' => $contiens
+            ];
         }
+        }
+        return $data;
     }
 
     /**
