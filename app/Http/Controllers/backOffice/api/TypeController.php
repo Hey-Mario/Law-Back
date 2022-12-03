@@ -78,7 +78,11 @@ class TypeController extends Controller
     public function shw($id)
     {
         $contents = Info::where('id',$id)->first();
-        return $contents;
+        return [
+            'numeroType' => is_null($contents->numeroType) ? " " : $contents->numeroType,
+            'titreType' => is_null($contents->titreType) ? " " : $contents->titreType,
+            'titreTypeMg' => is_null($contents->titreTypeMg) ? " " : $contents->titreTypeMg,
+        ];
     }
     
 
