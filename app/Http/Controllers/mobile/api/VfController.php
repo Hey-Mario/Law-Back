@@ -19,14 +19,16 @@ class VfController extends Controller
         // $contenus = Contenu::all();
         $infos = Info::all();
         $data = [];
-        $contiens = [];
+
         foreach($infos as $info)
         {
+            $contiens = [];
             // $info->contenus;
             // $info->type;
             // $info->theme;
             foreach($info->contenus as $contenu)
         {
+            // if($info->the == $contenu->info_id){
             $contiens[] = [
                     'id' => $contenu->id,
                     'titre' => is_null($contenu->numtitre) ? null : 'Titre '.$contenu->numtitre ." ".$contenu->titre,
@@ -38,11 +40,13 @@ class VfController extends Controller
                     // 'numSousSection' => ,
                     'article' => is_null($contenu->numArticle) ? null :'Article '.$contenu->numArticle,
                     'contenu' => $contenu->article,
-            ];
+                ];
+            // }
         }
             $data[] = [
                 'id' => $info->id,
                 "intitule" => $info->type->nom. " no ".$info->numeroType." ".$info->titreType,
+                "pdf" => $info->pdf,
                 'type' => [
                     'id' => $info->type->id,
                     'nom' => $info->type->nom,
