@@ -19,15 +19,18 @@ class VfController extends Controller
         // $contenus = Contenu::all();
         $infos = Info::all();
         $data = [];
-        $contiens = [];
+
         foreach($infos as $info)
         {
+            $contiens = [];
             // $info->contenus;
             // $info->type;
             // $info->theme;
             foreach($info->contenus as $contenu)
         {
+            // if($info->the == $contenu->info_id){
             $contiens[] = [
+                    'id' => $contenu->id,
                     'titre' => is_null($contenu->numtitre) ? null : 'Titre '.$contenu->numtitre ." ".$contenu->titre,
                     // 'numChapitre' => ,
                     'chapitre' => is_null($contenu->numChapitre) ? null : 'Chapitre '.$contenu->numChapitre." ".$contenu->chapitre,
@@ -35,13 +38,15 @@ class VfController extends Controller
                     'section' => is_null($contenu->numSection) ? null : 'Section '.$contenu->numSection." ".$contenu->section,
                     'sousSection' => is_null($contenu->numSousSection) ? null : 'Sous Section '.$contenu->numSousSection." ".$contenu->sousSection,
                     // 'numSousSection' => ,
-                    'article' => 'Article '.$contenu->numArticle,
+                    'article' => is_null($contenu->numArticle) ? null :'Article '.$contenu->numArticle,
                     'contenu' => $contenu->article,
-            ];
+                ];
+            // }
         }
             $data[] = [
                 'id' => $info->id,
                 "intitule" => $info->type->nom. " no ".$info->numeroType." ".$info->titreType,
+                "pdf" => $info->pdf,
                 'type' => [
                     'id' => $info->type->id,
                     'nom' => $info->type->nom,

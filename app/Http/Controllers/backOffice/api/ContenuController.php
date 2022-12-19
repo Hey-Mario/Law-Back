@@ -40,14 +40,19 @@ class ContenuController extends Controller
             Contenu::create([
                 'numtitre' => $request->numtitre,
                 'titre' =>$request->titre,
+                'titreMg' =>$request->titreMg,
                 'numChapitre' =>$request->numChapitre,
                 'chapitre' =>$request->chapitre,
+                'chapitreMg' =>$request->chapitreMg,
                 'numSection' =>$request->numSection,
                 'section' =>$request->section,
+                'sectionMg' =>$request->sectionMg,
                 'numSousSection' =>$request->numSousSection,
                 'sousSection' =>$request->sousSection,
+                'sousSectionMg' =>$request->sousSectionMg,
                 'numArticle' =>$request->numArticle,
                 'article' =>$request->article,
+                'articleMg' =>$request->articleMg,
                 'info_id' =>$request->info_id,
             ]);
         }
@@ -89,14 +94,18 @@ class ContenuController extends Controller
         $contenu->update([
             'numtitre' => $request->numtitre,
             'titre' =>$request->titre,
+            'titreMg' =>$request->titreMg,
             'numChapitre' =>$request->numChapitre,
-            'chapitre' =>$request->chapitre,
+            'chapitreMg' =>$request->chapitreMg,
             'numSection' =>$request->numSection,
             'section' =>$request->section,
+            'sectionMg' =>$request->sectionMg,
             'numSousSection' =>$request->numSousSection,
             'sousSection' =>$request->sousSection,
+            'sousSectionMg' =>$request->sousSectionMg,
             'numArticle' =>$request->numArticle,
             'article' =>$request->article,
+            'articleMg' =>$request->articleMg,
             'info_id' =>$request->info_id,
         ]);
 

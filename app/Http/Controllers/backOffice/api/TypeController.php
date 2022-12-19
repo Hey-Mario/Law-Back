@@ -55,6 +55,7 @@ class TypeController extends Controller
         if(!is_null($request)){
             Info::create([
                 'titreType' => $request->texte,
+                'titreTypeMg' => $request->texteMg,
                 'numeroType' => $request->numero,
                 'theme_id' => (int)$theme_id,
                 'type_id' => (int)$request->type_id,
@@ -74,6 +75,16 @@ class TypeController extends Controller
         $contents = Contenu::where('info_id',$id_selec)->get();
         return $contents;
     }
+    public function shw($id)
+    {
+        $contents = Info::where('id',$id)->first();
+        return [
+            'numeroType' => is_null($contents->numeroType) ? " " : $contents->numeroType,
+            'titreType' => is_null($contents->titreType) ? " " : $contents->titreType,
+            'titreTypeMg' => is_null($contents->titreTypeMg) ? " " : $contents->titreTypeMg,
+        ];
+    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -93,14 +104,13 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $type_id, $theme_id)
+    public function update(Request $request, $id)
     {
-        $type = Type::where('id', $type_id)->first();
-        $type->update([
+        $info = Info::where('id', $id)->first();
+        $info->update([
             'titreType' => $request->texte,
+            'titreTypeMg' => $request->texteMg,
             'numeroType' => $request->numero,
-            'theme_id' => (int)$theme_id,
-            'type_id' => (int)$request->type_id,
         ]);
     }
 
